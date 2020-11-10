@@ -36,7 +36,7 @@ var readBinaryFileFunc = func(filePaths []string) (io.ReadCloser, string, error)
 
 		fileInfo, statErr := os.Stat(filePath)
 		if statErr != nil || fileInfo.IsDir() {
-			return nil, filePath, statErr
+			continue
 		}
 
 		reader, readErr := os.Open(filePath)
