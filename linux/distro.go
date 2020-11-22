@@ -246,6 +246,7 @@ var DistroTests = []func(ReleaseDetails, ReleaseDetails) (bool, LinuxDistro){
 	IsNovellOES,
 	IsPuppy,
 	IsRancherOS,
+	IsNixOS,
 	IsAlt,
 	IsCrux,
 	IsSourceMage,

@@ -953,6 +953,26 @@ func TestDiscoverMXLinux(t *testing.T) {
 		osReleaseProperties)
 }
 
+func TestDiscoverNix(t *testing.T) {
+	lsbProperties := map[string]string{}
+	osReleaseProperties := map[string]string{
+		"DOCUMENTATION_URL": "https://nixos.org/learn.html",
+		"NAME":              "NixOS",
+		"VERSION":           "20.09.1889.58f9c4c7d3a (Nightingale)",
+		"PRETTY_NAME":       "NixOS 20.09 (Nightingale)",
+		"LOGO":              "nix-snowflake",
+		"HOME_URL":          "https://nixos.org/",
+		"SUPPORT_URL":       "https://nixos.org/community.html",
+		"BUG_REPORT_URL":    "https://github.com/NixOS/nixpkgs/issues",
+		"ID":                "nixos",
+		"VERSION_CODENAME":  "nightingale",
+		"VERSION_ID":        "20.09.1889.58f9c4c7d3a",
+	}
+
+	distroIsDetectedBasedOnProperties(t, "nixos", "NixOS", "20.09.1889.58f9c4c7d3a", lsbProperties,
+		osReleaseProperties)
+}
+
 func TestDiscoverNovellOES(t *testing.T) {
 	originalReadFileFunc := readFileFunc
 	readFileFunc = func(filePaths ...string) (bool, string) {

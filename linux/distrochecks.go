@@ -554,6 +554,20 @@ func IsNovellOES(lsbProperties ReleaseDetails, osReleaseProperties ReleaseDetail
 	return false, LinuxDistro{}
 }
 
+func IsNixOS(lsbProperties ReleaseDetails, osReleaseProperties ReleaseDetails) (bool, LinuxDistro) {
+	if osReleaseProperties["ID"] == "nixos" {
+		return true, LinuxDistro{
+			Name:       "NixOS",
+			ID:         "nixos",
+			Version:    osReleaseProperties["VERSION_ID"],
+			LsbRelease: lsbProperties,
+			OsRelease:  osReleaseProperties,
+		}
+	}
+
+	return false, LinuxDistro{}
+}
+
 func IsRancherOS(lsbProperties ReleaseDetails, osReleaseProperties ReleaseDetails) (bool, LinuxDistro) {
 	if osReleaseProperties["ID"] == "rancheros" {
 		return true, LinuxDistro{
